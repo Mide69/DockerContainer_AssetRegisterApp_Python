@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  asset-inventory:
+    build: .
+    container_name: it-asset-inventory
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=production
+      - SECRET_KEY=your-secret-key-change-this
+      - HOST=0.0.0.0
+      - PORT=5000
+    volumes:
+      # Persist database data
+      - asset_data:/app/data
+      # For camera access (if needed)
+      - /dev:/dev
+    privileged: true  # Needed for camera access
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s

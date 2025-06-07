@@ -1,0 +1,5 @@
+Flask==2.3.3
+opencv-python-headless==4.8.1.78
+pyzbar==0.1.9
+Pillow==10.0.1
+gunicorn==21.2.0
