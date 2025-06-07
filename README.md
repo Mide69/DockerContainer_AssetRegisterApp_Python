@@ -1,0 +1,1 @@
+# DockerContainer_AssetRegisterApp_Python
